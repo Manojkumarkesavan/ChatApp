@@ -16,9 +16,9 @@ import javax.management.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.CriteriaDefinition;
+//import org.springframework.data.mongodb.core.MongoTemplate;
+//import org.springframework.data.mongodb.core.query.Criteria;
+//import org.springframework.data.mongodb.core.query.CriteriaDefinition;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,8 +36,8 @@ import com.example.demo.model.Role;
 import com.example.demo.model.User;
 import com.example.demo.model.UserDTO;
 import com.example.demo.model.chatListDTO;
-import com.example.demo.repo.CollectionRepositoryImpl;
-import com.example.demo.repo.FileUploadRepository;
+//import com.example.demo.repo.CollectionRepositoryImpl;
+//import com.example.demo.repo.FileUploadRepository;
 import com.example.demo.repo.GroupMasterRepository;
 import com.example.demo.repo.GroupUserRepository;
 import com.example.demo.repo.MessageMasterRepository;
@@ -65,14 +65,14 @@ public class ServiceImplementation implements UserService {
 	@Autowired
 	MessageMasterRepository messageMasterRepo;
 
-	@Autowired
-	FileUploadRepository fileUploadRepository;
+	//@Autowired
+	//FileUploadRepository fileUploadRepository;
 
 	@Autowired
 	GroupUserRepository groupUserRepository;
 
-	@Autowired
-	private MongoTemplate mongoTemplate;
+	//@Autowired
+	//private MongoTemplate mongoTemplate;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -243,8 +243,8 @@ public class ServiceImplementation implements UserService {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			mongoTemplate.save(file, new CollectionRepositoryImpl().getCollectionName().toString());
-			st.append(file.get_id() + ",");
+			//mongoTemplate.save(file, new CollectionRepositoryImpl().getCollectionName().toString());
+			//st.append(file.get_id() + ",");
 
 		}
 		String str = "";
@@ -554,26 +554,32 @@ public class ServiceImplementation implements UserService {
 	@Override
 	public FileUpload downloadFile(String objectId) {
 
-		return mongoTemplate.findById(objectId.replace("\"", ""), FileUpload.class,
-				new CollectionRepositoryImpl().getCollectionName());
+//		return mongoTemplate.findById(objectId.replace("\"", ""), FileUpload.class,
+//				new CollectionRepositoryImpl().getCollectionName());
+		return null;
 	}
 
 	@Override
 	public boolean uploadFile(MultipartFile[] files, String userId) {
-		FileUpload docs = null;
-		fileUploadRepository.setCollectionName("Documents");
-		for (MultipartFile file : files) {
-			docs=new FileUpload();
-			docs.setUserId(userId);
-			docs.setName(file.getOriginalFilename());
-			try {
-				docs.setFileContent(file.getBytes());
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			mongoTemplate.save(docs,new CollectionRepositoryImpl().getCollectionName().toString());
-		}
-		return true;
+		return false;
 	}
+
+//	@Override
+//	public boolean uploadFile(MultipartFile[] files, String userId) {
+//		FileUpload docs = null;
+//		fileUploadRepository.setCollectionName("Documents");
+//		for (MultipartFile file : files) {
+//			docs=new FileUpload();
+//			docs.setUserId(userId);
+//			docs.setName(file.getOriginalFilename());
+//			try {
+//				docs.setFileContent(file.getBytes());
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//
+//			mongoTemplate.save(docs,new CollectionRepositoryImpl().getCollectionName().toString());
+//		}
+//		return true;
+//	}
 }

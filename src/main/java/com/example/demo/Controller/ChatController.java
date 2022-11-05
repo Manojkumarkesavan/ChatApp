@@ -118,7 +118,8 @@ public class ChatController {
 	@RequestMapping(value = "/uploadDoc", method = RequestMethod.POST)
 	public boolean uploadFile(@RequestParam(name = "files", required = false) MultipartFile[] files,@RequestParam("userId") String userId) throws IOException {
 		
-		return userService.uploadFile(files,userId);
+		//return userService.uploadFile(files,userId);
+		return false;
 	}
 
 	@RequestMapping(value = "/screenSharing", method = RequestMethod.GET)

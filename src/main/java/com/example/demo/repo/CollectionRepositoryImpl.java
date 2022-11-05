@@ -1,8 +1,9 @@
+/*
 package com.example.demo.repo;
 
 public class CollectionRepositoryImpl implements CollectionRepository{
 	
-	private static String collectionName = "Images";
+	private static String collectionName = "FileHub";
 
     public String getCollectionName() {
         return collectionName;
@@ -13,3 +14,4 @@ public class CollectionRepositoryImpl implements CollectionRepository{
     }
 
 }
+*/

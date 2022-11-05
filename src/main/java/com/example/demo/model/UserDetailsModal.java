@@ -41,8 +41,11 @@ public class UserDetailsModal implements Serializable {
 	@Column(name = "phone")
 	public String phone;
 	
-	@Column(name = "city")
+	@Column(name = "state")
 	public String state;
+
+	@Column(name = "city")
+	public String city;
 	
 	@Column(name = "zip")
 	public String zip;

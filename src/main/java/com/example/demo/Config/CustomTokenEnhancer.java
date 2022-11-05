@@ -11,7 +11,6 @@ import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -19,12 +18,10 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 
 import com.example.demo.model.FileUpload;
 import com.example.demo.model.User;
-import com.example.demo.repo.CollectionRepositoryImpl;
+//import com.example.demo.repo.CollectionRepositoryImpl;
 
 public class CustomTokenEnhancer extends JwtAccessTokenConverter {
 
-	@Autowired
-	private MongoTemplate mongoTemplate;
 
 	@Value("${DownloadedFiles}")
 	private String commFiles;
@@ -69,7 +66,8 @@ public class CustomTokenEnhancer extends JwtAccessTokenConverter {
 
 	private FileUpload downloadFile(String objectId) {
 
-		return mongoTemplate.findById(objectId.replace("\"", ""), FileUpload.class,
-				new CollectionRepositoryImpl().getCollectionName());
+//		return mongoTemplate.findById(objectId.replace("\"", ""), FileUpload.class,
+//				new CollectionRepositoryImpl().getCollectionName());
+		return null;
 	}
 }

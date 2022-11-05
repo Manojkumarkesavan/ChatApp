@@ -1,3 +1,4 @@
+/*
 package com.example.demo.repo;
 
 import java.util.List;
@@ -14,4 +15,4 @@ public interface FileUploadRepository extends MongoRepository<FileUpload, String
 	@Query("{ 'userId' : ?0 }")
 	List<FileUpload> findByuserId(String userId);
 
-}
+}*/
